@@ -22,21 +22,7 @@ public class Operations {
     Statement sta= null;
     PreparedStatement psta = null;
     
-    public int bookCount(){
-        int label = 0;
-        String sorgu = " SELECT COUNT(*) FROM books_database";
-        
-        try {
-            sta = con.createStatement();
-            ResultSet rs = sta.executeQuery(sorgu);
-            rs.next();
-            label = rs.getInt(1);
-        } catch (SQLException ex) {
-            Logger.getLogger(Operations.class.getName()).log(Level.SEVERE, null, ex);
-            return 0 ;
-        }
-        return label;
-    }
+    
     
     public void bookDelete(int id){
         String sorgu ="DELETE FROM books_database WHERE id=?";
@@ -107,23 +93,7 @@ public class Operations {
         } 
     }
     
-    public Operations() {
-        //url-> jdbc:mysql://host:port/db_name;id;password;
-        
-        String url ="jdbc:mysql://"+Database.host+":"+Database.port+"/"+Database.db_name+"?useUnicode=true&characterEncoding=UTF-8";
-        
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection(url,Database.id,Database.password);
-            System.out.println("Veritabanına başarıyla bağlandınız. :)");     
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Operations.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Driver calışmadı :/");
-        } catch (SQLException ex) {
-            Logger.getLogger(Operations.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Connection calışmadı :/");
-        }
-    }
+   
     
     public boolean Login(String id,String password){
         String sorgu = "Select * from admin where id=? and password=?";
@@ -141,10 +111,7 @@ public class Operations {
              
     }
            
-    public static void main(String[] args) {
-        Operations op = new Operations();
-       
-    }
+    
 
    
 }
