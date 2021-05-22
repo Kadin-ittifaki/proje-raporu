@@ -119,7 +119,7 @@ public class Operations {
             System.out.println("Veritabanına başarıyla bağlandınız. :)");     
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Operations.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Driver calışmadı :/");
+            System.out.println("Driver calışmadı:/");
         } catch (SQLException ex) {
             Logger.getLogger(Operations.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Connection calışmadı :/");
@@ -128,6 +128,7 @@ public class Operations {
     
     public boolean Login(String id,String password){
         String sorgu = "Select * from admin where id=? and password=?";
+         System.out.println("Select * from admin where id=? and password=?");   
         try {
             psta = con.prepareStatement(sorgu);
             psta.setString(1,id);
