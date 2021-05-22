@@ -20,7 +20,7 @@ public class Operations {
    
     Connection con = null;
     Statement sta= null;
-    //test
+    
     PreparedStatement psta = null;
     
     public int bookCount(){
